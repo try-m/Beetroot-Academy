@@ -1,0 +1,110 @@
+body {
+    background: url("w7-linux.jpeg") no-repeat center top fixed;
+    -webkit-background-size: 100%;
+    font-family: serif;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 900;
+    color: blue;
+}
+
+h2 {
+    font-weight: 900;
+    color: blue;
+}
+
+.flex-wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.add-todo-wrapper {
+    display: flex;
+    width: 399px;
+    height: 60px;
+    min-height: 40px;
+    align-items: center;
+    background: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.input-wrapper {
+    width: 81%;
+}
+
+.input-wrapper input {
+    font-weight: 900;
+    font-size: 17px;
+    width: 105%;
+    height: 38px;
+    outline: none;
+    border: none;
+}
+
+.button-wrapper button {
+    width: 81px;
+    height: 40px;
+    font-weight: 900;
+    font-size: 17px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.todo-item {
+    display: flex;
+    width: 400px;
+    background-color: greenyellow;
+    min-height: 50px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.todo-item, .checked {
+    background-color: white;
+    font-weight: 900;
+    font-size: 17px;
+}
+
+.todo-item, .delition {
+    animation: opacity 1s ease-in-out;
+}
+
+.description {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: ghostwhite;
+}
+
+.buttons {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.buttons input {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 5px;
+}
+
+.buttons button {
+    outline: none;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    height: 25px;
+    border-radius: 5px;
+}
