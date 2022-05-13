@@ -1,17 +1,26 @@
-name: docker-compose-actions-workflow
-on: push
+name: Build & lint project
+on: [push]
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Prepare config
-        run: cp .env.dist .env
-      - name: Build
-        run: make up
-      - name: Pre-Install
-        run: docker-compose exec -T --user=root php bash -c 'chown -R www-data:www-data /var/www'
-      - name: Install
-        run: make install
-      - name: Test
-        run: make test
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          tools: composer:v2
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+      - name: Install composer dependencies
+        run: composer install --prefer-dist --no-progress -vvv
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "14"
+      - name: Install frontend dependencies
+        run: cd web/themes/imalabya && yarn install
+      - name: Check coding standards for modules and theme
+        uses: docker://hussainweb/drupalqa:php7.4
+        with:
+          args: phpcs --standard="Drupal,DrupalPractice" -n --extensions="php,module,install,theme" web/themes/imalabya web/modules/custom --ignore=web/themes/*/dist/,web/themes/*/Gulpfile.js,web/themes/*/node_modules/
