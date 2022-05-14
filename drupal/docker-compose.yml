@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   mariadb:
-    image: try-m/mariadb:$MARIADB_TAG
+    image: wodby/mariadb:$MARIADB_TAG
     container_name: "${PROJECT_NAME}_mariadb"
     stop_grace_period: 30s
     environment:
@@ -10,12 +10,12 @@ services:
       MYSQL_DATABASE: $DB_NAME
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_PASSWORD
-    volumes:
+#    volumes:
 #      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
-      - /Users/tiaqi/Documents/drupal/mariadb:/var/lib/mysql # Use bind mount
+#      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
-    image: try-m/drupal-php:$PHP_TAG
+    image: wodby/drupal-php:$PHP_TAG
     container_name: "${PROJECT_NAME}_php"
     environment:
       SSMTP_MAILHUB: mailhog:1025
@@ -28,10 +28,10 @@ services:
 #      DB_NAME: $DB_NAME
 #      DB_DRIVER: $DB_DRIVER
 #      DRUSH_OPTIONS_URI: "http://${PROJECT_BASE_URL}:${PROJECT_PORT}"
-#      PHP_FPM_USER: try-m
-#      PHP_FPM_GROUP: try-m
+#      PHP_FPM_USER: wodby
+#      PHP_FPM_GROUP: wodby
 #      COLUMNS: 80 # Set 80 columns for docker exec -it.
-#      # Read instructions at https://try-m.com/docs/stacks/php/local/#xdebug
+#      # Read instructions at https://wodby.com/docs/stacks/php/local/#xdebug
 #      PHP_XDEBUG: 1
 #      PHP_XDEBUG_MODE: debug
 #      PHP_IDE_CONFIG: serverName=my-ide
@@ -46,24 +46,24 @@ services:
 #      MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","goog:chromeOptions":{"args":["--disable-gpu","--headless"]}}, "http://chrome:9515"]'
     volumes:
     - ./:/var/www/html:cached
-## Alternative for macOS users: Mutagen https://try-m.com/docs/stacks/drupal/local#docker-for-mac
+## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #    - drupal:/var/www/html
 ## For XHProf and Xdebug profiler traces
 #    - files:/mnt/files
 
   crond:
-    image: try-m/drupal-php:$PHP_TAG
+    image: wodby/drupal-php:$PHP_TAG
     container_name: "${PROJECT_NAME}_crond"
     environment:
       CRONTAB: "0 * * * * drush -r /var/www/html/web cron"
     command: sudo -E LD_PRELOAD=/usr/lib/preloadable_libiconv.so crond -f -d 0
     volumes:
     - ./:/var/www/html:cached
-## Alternative for macOS users: Mutagen https://try-m.com/docs/stacks/drupal/local#docker-for-mac
+## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #    - drupal:/var/www/html
 
   nginx:
-    image: try-m/nginx:$NGINX_TAG
+    image: wodby/nginx:$NGINX_TAG
     container_name: "${PROJECT_NAME}_nginx"
     depends_on:
     - php
@@ -76,7 +76,7 @@ services:
     #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
     volumes:
     - ./:/var/www/html:cached
-## Alternative for macOS users: Mutagen https://try-m.com/docs/stacks/drupal/local#docker-for-mac
+## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #    - drupal:/var/www/html
     labels:
     - "traefik.http.routers.${PROJECT_NAME}_nginx.rule=Host(`${PROJECT_BASE_URL}`)"
@@ -89,7 +89,7 @@ services:
     - "traefik.http.routers.${PROJECT_NAME}_mailhog.rule=Host(`mailhog.${PROJECT_BASE_URL}`)"
 
 #  postgres:
-#    image: try-m/postgres:$POSTGRES_TAG
+#    image: wodby/postgres:$POSTGRES_TAG
 #    container_name: "${PROJECT_NAME}_postgres"
 #    stop_grace_period: 30s
 #    environment:
@@ -102,7 +102,7 @@ services:
 #    - /path/to/postgres/data/on/host:/var/lib/postgresql/data # Use bind mount
 
 #  apache:
-#    image: try-m/apache:$APACHE_TAG
+#    image: wodby/apache:$APACHE_TAG
 #    container_name: "${PROJECT_NAME}_apache"
 #    depends_on:
 #    - php
@@ -113,14 +113,14 @@ services:
 #      APACHE_DOCUMENT_ROOT: /var/www/html/web
 #    volumes:
 #    - ./:/var/www/html:cached
-## Alternative for macOS users: Mutagen https://try-m.com/docs/stacks/drupal/local#docker-for-mac
+## Alternative for macOS users: Mutagen https://wodby.com/docs/stacks/drupal/local#docker-for-mac
 #    - drupal:/var/www/html
 
 #    labels:
 #    - "traefik.http.routers.${PROJECT_NAME}_apache.rule=Host(`${PROJECT_BASE_URL}`)"
 
 #  varnish:
-#    image: try-m/varnish:$VARNISH_TAG
+#    image: wodby/varnish:$VARNISH_TAG
 #    container_name: "${PROJECT_NAME}_varnish"
 #    depends_on:
 #    - nginx
@@ -136,11 +136,11 @@ services:
 
 #  redis:
 #    container_name: "${PROJECT_NAME}_redis"
-#    image: try-m/redis:$REDIS_TAG
+#    image: wodby/redis:$REDIS_TAG
 
 #  adminer:
 #    container_name: "${PROJECT_NAME}_adminer"
-#    image: try-m/adminer:$ADMINER_TAG
+#    image: wodby/adminer:$ADMINER_TAG
 #    environment:
 #      # For PostgreSQL:
 #      #      ADMINER_DEFAULT_DB_DRIVER: pgsql
@@ -161,7 +161,7 @@ services:
 #    - "traefik.http.routers.${PROJECT_NAME}_pma.rule=Host(`pma.${PROJECT_BASE_URL}`)"
 
 #  solr:
-#    image: try-m/solr:$SOLR_TAG
+#    image: wodby/solr:$SOLR_TAG
 #    container_name: "${PROJECT_NAME}_solr"
 #    environment:
 ##      SOLR_DEFAULT_CONFIG_SET: $SOLR_CONFIG_SET
@@ -182,7 +182,7 @@ services:
 #      ZOO_4LW_COMMANDS_WHITELIST: mntr, conf, ruok
 
 #  drupal-node:
-#    image: try-m/drupal-node:$DRUPAL_NODE_TAG
+#    image: wodby/drupal-node:$DRUPAL_NODE_TAG
 #    container_name: "${PROJECT_NAME}_drupal_nodejs"
 #    labels:
 #    - "traefik.http.routers.${PROJECT_NAME}_drupal_node.rule=Host(`drupal_node.${PROJECT_BASE_URL}`)"
@@ -191,11 +191,11 @@ services:
 
 #  memcached:
 #    container_name: "${PROJECT_NAME}_memcached"
-#    image: try-m/memcached:$MEMCACHED_TAG
+#    image: wodby/memcached:$MEMCACHED_TAG
 
 #  rsyslog:
 #    container_name: "${PROJECT_NAME}_rsyslog"
-#    image: try-mby/rsyslog:$RSYSLOG_TAG
+#    image: wodby/rsyslog:$RSYSLOG_TAG
 
 #  athenapdf:
 #    image: arachnysdocker/athenapdf-service:$ATHENAPDF_TAG
@@ -209,7 +209,7 @@ services:
 #      WEAVER_CONVERSION_FALLBACK: "false"
 
 #  node:
-#    image: try-m/node:$NODE_TAG
+#    image: wodby/node:$NODE_TAG
 #    container_name: "${PROJECT_NAME}_node"
 #    working_dir: /var/www/html/path/to/theme/to/build
 #    labels:
@@ -229,7 +229,7 @@ services:
 #      BLACKFIRE_SERVER_TOKEN: YYYYY
 
 #  webgrind:
-#    image: try-m/webgrind:$WEBGRIND_TAG
+#    image: wodby/webgrind:$WEBGRIND_TAG
 #    container_name: "${PROJECT_NAME}_webgrind"
 #    environment:
 #      WEBGRIND_PROFILER_DIR: /mnt/files/xdebug
@@ -239,7 +239,7 @@ services:
 #    - files:/mnt/files
 
 #  elasticsearch:
-#    image: try-m/elasticsearch:$ELASTICSEARCH_TAG
+#    image: wodby/elasticsearch:$ELASTICSEARCH_TAG
 #    container_name: "${PROJECT_NAME}_elasticsearch"
 #    environment:
 #      ES_JAVA_OPTS: "-Xms500m -Xmx500m"
@@ -249,7 +249,7 @@ services:
 #        hard: -1
 
 #  kibana:
-#    image: try-m/kibana:$KIBANA_TAG
+#    image: wodby/kibana:$KIBANA_TAG
 #    container_name: "${PROJECT_NAME}_kibana"
 #    depends_on:
 #    - elasticsearch
@@ -259,10 +259,10 @@ services:
 
 #  opensmtpd:
 #    container_name: "${PROJECT_NAME}_opensmtpd"
-#    image: try-m/opensmtpd:$OPENSMTPD_TAG
+#    image: wodby/opensmtpd:$OPENSMTPD_TAG
 
 #  xhprof:
-#    image: try-m/xhprof:$XHPROF_TAG
+#    image: wodby/xhprof:$XHPROF_TAG
 #    container_name: "${PROJECT_NAME}_xhprof"
 #    restart: always
 #    volumes:
