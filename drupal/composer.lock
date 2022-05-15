@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5307840f4cfafe768a76c601aceeea10",
+    "content-hash": "5700366119b7f6e16d850a7a21053b94",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -505,132 +505,6 @@
             "time": "2020-10-27T21:46:55+00:00"
         },
         {
-            "name": "drupal/allowed_languages",
-            "version": "2.0.0-alpha1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/allowed_languages.git",
-                "reference": "2.0.0-alpha1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/allowed_languages-2.0.0-alpha1.zip",
-                "reference": "2.0.0-alpha1",
-                "shasum": "ac15547155cf2ec50ec8e4809a49213a97c23925"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "2.0.0-alpha1",
-                    "datestamp": "1603766988",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christoffer Palm",
-                    "homepage": "https://www.drupal.org/user/3523162",
-                    "email": "christoffer.palm@oddhill.se",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Leander Lindahl",
-                    "homepage": "https://www.drupal.org/user/112352",
-                    "email": "leander.lindahl@axis.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "leanderl",
-                    "homepage": "https://www.drupal.org/user/519926"
-                },
-                {
-                    "name": "linef",
-                    "homepage": "https://www.drupal.org/user/3523161"
-                },
-                {
-                    "name": "nterbogt",
-                    "homepage": "https://www.drupal.org/user/102218"
-                }
-            ],
-            "description": "Lets you limit the languages a user may use when managing content.",
-            "homepage": "https://www.drupal.org/project/allowed_languages",
-            "keywords": [
-                "Drupal",
-                "Language"
-            ],
-            "support": {
-                "source": "http://cgit.drupalcode.org/allowed_languages",
-                "issues": "https://www.drupal.org/project/issues/allowed_languages"
-            }
-        },
-        {
-            "name": "drupal/blog",
-            "version": "3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/blog.git",
-                "reference": "3.0.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/blog-3.0.1.zip",
-                "reference": "3.0.1",
-                "shasum": "2e92a6d8c33a6c5f61ff3e05e869d35dab67039e"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "3.0.1",
-                    "datestamp": "1592611765",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Kurucz István",
-                    "homepage": "https://www.drupal.org/u/nevergone"
-                },
-                {
-                    "name": "David Norman",
-                    "homepage": "https://www.drupal.org/u/deekayen"
-                },
-                {
-                    "name": "Christopher Hall",
-                    "homepage": "https://www.drupal.org/u/chris_hall_hu_cheng"
-                },
-                {
-                    "name": "Dave Reid",
-                    "homepage": "https://www.drupal.org/u/dave-reid"
-                }
-            ],
-            "description": "Enables multi-user blogs.",
-            "homepage": "https://www.drupal.org/project/blog",
-            "support": {
-                "source": "https://git.drupalcode.org/project/blog",
-                "issues": "https://www.drupal.org/project/issues/blog"
-            }
-        },
-        {
             "name": "drupal/bootstrap",
             "version": "3.24.0",
             "source": {
@@ -686,52 +560,6 @@
                 "docs": "https://drupal-bootstrap.org",
                 "issues": "https://www.drupal.org/project/issues/bootstrap",
                 "irc": "irc://irc.freenode.org/drupal-bootstrap"
-            }
-        },
-        {
-            "name": "drupal/bootstrap5",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/bootstrap5.git",
-                "reference": "1.1.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap5-1.1.3.zip",
-                "reference": "1.1.3",
-                "shasum": "eb3745cda3ff9ad7f99fbe073b752d899323b31e"
-            },
-            "require": {
-                "drupal/core": "^8.9 || ^9"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "1.1.3",
-                    "datestamp": "1641738987",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Vladimir Roudakov (vladimiraus)",
-                    "homepage": "https://www.drupal.org/u/vladimiraus",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Master theme using Bootstrap 5: powerful front-end framework for faster and easier web development.",
-            "homepage": "https://www.drupal.org/project/bootstrap5",
-            "support": {
-                "source": "https://git.drupalcode.org/project/bootstrap5",
-                "issues": "https://www.drupal.org/project/issues/bootstrap5"
             }
         },
         {
@@ -1155,75 +983,6 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Locked core dependencies; require this project INSTEAD OF drupal/core."
-        },
-        {
-            "name": "drupal/token",
-            "version": "1.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/token.git",
-                "reference": "8.x-1.10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/token-8.x-1.10.zip",
-                "reference": "8.x-1.10",
-                "shasum": "8b81224ab0420221b292e8d3b66d0da726317400"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-1.10",
-                    "datestamp": "1638619775",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "drush": {
-                    "services": {
-                        "drush.services.yml": "^9 || ^10"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Berdir",
-                    "homepage": "https://www.drupal.org/user/214652"
-                },
-                {
-                    "name": "Dave Reid",
-                    "homepage": "https://www.drupal.org/user/53892"
-                },
-                {
-                    "name": "eaton",
-                    "homepage": "https://www.drupal.org/user/16496"
-                },
-                {
-                    "name": "fago",
-                    "homepage": "https://www.drupal.org/user/16747"
-                },
-                {
-                    "name": "greggles",
-                    "homepage": "https://www.drupal.org/user/36762"
-                },
-                {
-                    "name": "mikeryan",
-                    "homepage": "https://www.drupal.org/user/4420"
-                }
-            ],
-            "description": "Provides a user interface for the Token API, some missing core tokens.",
-            "homepage": "https://www.drupal.org/project/token",
-            "support": {
-                "source": "https://git.drupalcode.org/project/token"
-            }
         },
         {
             "name": "egulias/email-validator",
@@ -4897,9 +4656,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "drupal/allowed_languages": 15
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
